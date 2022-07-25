@@ -1,0 +1,98 @@
+---
+title: "From Data to Presentation"
+author: "Sarah Bez, Samuel Merk"
+subtitle: "Data Import, Wrangling & Visualisierung"
+format: 
+  revealjs:
+    title-slide-attributes:
+      data-background-image: img/sash.svg
+      data-background-size: 30%
+      data-background-position: 0 0
+    slide-number: true
+    controls: true
+    logo: https://drive.google.com/uc?export=view&id=1Eoy1slqV_DDgG50f3V6tc6QvFnhCBE1H
+    footer: "Folien unter https://bit.ly/merk050"
+    theme: [dark, css/custom.scss]
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 3
+      buttons: true
+      chalk-effect: 0
+    fullscreen: true
+    pdfexport: true
+---
+## Willkommen zum [{{< fa brands r-project >}}]{.imp}-Workshop
+```{r hidden chunk which creates template stuff}
+#| echo: false
+
+library(fontawesome)
+library(tidyverse)
+# Change css to lecker PH green
+if(!dir.exists("css"))
+dir.create("css")
+fileConn<-file("css/custom.scss")
+writeLines(c("/*-- scss:defaults --*/",
+             "$link-color: #8cd000 !default;"), fileConn)
+close(fileConn)
+
+# create sash with URL
+sash <- 
+  ggplot() + 
+  geom_polygon(data = tibble(x = c(0,4,5.5,0),
+                             y = c(1,5,5,-.5)),
+               aes(x,y), fill = "#8cd000") + 
+  coord_fixed() +
+  annotate(geom = "text", 
+           label = "www.ph-ka.de", 
+           x = .8, y = .8, 
+           angle = 45,
+           hjust = 0, vjust = 0,
+           size = 17,
+           color = "white") +
+ theme_void() + 
+ theme(plot.margin = margin(-2,0,0,-12, unit = "cm"))
+ggsave("img/sash.svg", sash)
+```
+
+
+```{css}
+.imp {
+  color: #8cd000;
+}
+```
+
+1) Vorstellungsrunde & Erwartungsabklärung
+2) Seminarmodus
+3) Fundamentals of [{{< fa brands r-project >}}]{.imp}
+4) Data import
+5) Data Wrangling
+6) Data Viz
+
+## {.center}
+
+::: {.fragment .highlight-green}
+<center>
+<font style='font-size:5em'>{{< fa comments >}}</font><br>
+<font style='font-size:1.3em'>Vorstellungsrunde </font>
+</center>
+:::
+
+## Seminarmodus
+::: {.incremental}
+* Anleitung zum selbst le{{< fa brands r-project >}}nen
+    * Hands-On
+    * Ausgangspunkte für erfolgreiches Problemlösen
+    * Wiederholtes Üben
+* Wechsel von induktivem & deduktivem Lernen
+* Interaktivität
+* Adaptivität
+* Folien ~~zur Dokumentation~~ als Wegweiser
+:::
+
+## {.center}
+
+::: {.fragment .highlight-green}
+<center>
+<font style='font-size:2em'>Fundamentals of {{< fa brands r-project >}}</font>
+</center>
+:::
